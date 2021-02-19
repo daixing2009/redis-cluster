@@ -1,0 +1,23 @@
+server:
+  port: 8001
+
+#redis集群版
+spring:
+  redis:
+    timeout: 6000ms
+    database: 0
+    cluster:
+      nodes:
+        - yond.redis.com:9001
+        - yond.redis.com:9002
+        - yond.redis.com:9003
+        - yond.redis.com:9004
+        - yond.redis.com:9005
+        - yond.redis.com:9006
+      max-redirects: 3 # 获取失败 最大重定向次数
+    lettuce:
+      pool:
+        max-active: 100  #连接池最大连接数（使用负值表示没有限制）
+        max-idle: 5 # 连接池中的最大空闲连接
+        min-idle: 2 # 连接池中的最小空闲连接
+        max-wait: -1 # 连接池最大阻塞等待时间（使用负值表示没有限制）
